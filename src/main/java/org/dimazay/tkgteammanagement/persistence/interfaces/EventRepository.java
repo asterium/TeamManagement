@@ -5,10 +5,14 @@ import org.dimazay.tkgteammanagement.model.events.EventType;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import java.util.List;
+
 /**
  * Created by Asterium on 13.06.2017.
  */
 @RepositoryRestResource(path = "events")
 public interface EventRepository extends MongoRepository<Event, String> {
         public Event findByTitle(@Param("title") String  title);
+        public List<Event> findAll();
 }
