@@ -1,7 +1,7 @@
 package org.dimazay.tkgteammanagement.rest.resources;
 
 import org.dimazay.tkgteammanagement.model.User;
-import org.dimazay.tkgteammanagement.persistence.UserRepository;
+import org.dimazay.tkgteammanagement.persistence.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,12 +21,12 @@ import java.util.List;
 public class UserResource {
 
     @Autowired
-    private UserRepository userRepository;
+    public UserRepository userRepository;
 
     @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<User> registerUser(@RequestBody User user){
-        userRepository.add(user);
-        return new ResponseEntity<User>(HttpStatus.OK);
+        userRepository.save(user);
+        return new ResponseEntity<User>(user,HttpStatus.OK);
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

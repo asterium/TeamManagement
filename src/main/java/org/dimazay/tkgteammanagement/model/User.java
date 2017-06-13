@@ -1,21 +1,20 @@
 package org.dimazay.tkgteammanagement.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 /**
  * Created by Asterium on 09.06.2017.
  */
+@Document
 public class User {
+    @Field("_id")
     private String email;
-    private Long id;
+    private String role;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "email='" + email + '\'' +
-                ", id=" + id +
-                '}';
-    }
 
-   public String getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -23,12 +22,15 @@ public class User {
         this.email = email;
     }
 
-    public Long getId() {
-        return id;
+
+
+
+    public String getRole() {
+        return role;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -38,14 +40,22 @@ public class User {
 
         User user = (User) o;
 
-        if (!email.equals(user.email)) return false;
-        return id.equals(user.id);
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        return role != null ? role.equals(user.role) : user.role == null;
     }
 
     @Override
     public int hashCode() {
-        int result = email.hashCode();
-        result = 31 * result + id.hashCode();
+        int result = email != null ? email.hashCode() : 0;
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
