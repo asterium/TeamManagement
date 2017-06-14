@@ -3,6 +3,8 @@ package org.dimazay.tkgteammanagement.rest.resources;
 import org.dimazay.tkgteammanagement.model.User;
 import org.dimazay.tkgteammanagement.persistence.interfaces.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,7 @@ public class UserResource {
 
     @RequestMapping(path = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<User>> findAllUsers(){
-        List<User> users = userRepository.findAll();
+        List<User> users = userRepository.findAll(new PageRequest(0,10, Sort.Direction.DESC, "email")).getContent();
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
 
