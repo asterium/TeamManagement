@@ -40,9 +40,6 @@ public class EventResourceTest {
 
     @Before
     public void setUp(){
-//        RestAssuredMockMvc.standaloneSetup(EventResource.class);
-//        RestAssuredMockMvc.basePath = ResourceConstants.EVENT_RESOURSE_PATH;
-//        RestAssuredMockMvc.basePath = ResourceConstants.EVENT_RESOURSE_PATH;
         RestAssured.port = port;
         RestAssured.baseURI = "http://localhost";
         RestAssured.basePath = ResourceConstants.EVENT_RESOURSE_PATH;

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import org.dimazay.tkgteammanagement.model.User;
+import org.dimazay.tkgteammanagement.model.participation.IndividualParticipation;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -34,9 +35,6 @@ public class Event {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalTime startTime;
     private String title;
-
-    private List<User> attendees;
-
 
     public String getTitle() {
         return title;
@@ -86,11 +84,5 @@ public class Event {
         this.startTime = startTime;
     }
 
-    public List<User> getAttendees() {
-        return attendees;
-    }
 
-    public void setAttendees(List<User> attendees) {
-        this.attendees = attendees;
-    }
 }
