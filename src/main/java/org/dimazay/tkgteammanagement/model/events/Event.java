@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
+import org.bson.types.ObjectId;
 import org.dimazay.tkgteammanagement.model.User;
 import org.dimazay.tkgteammanagement.model.participation.IndividualParticipation;
 import org.springframework.data.annotation.Id;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface ParticipationRepository extends MongoRepository<Participation, String> {
     @Query(value="{eventId : ?0}")
-    public Participation findByEventId(ObjectId eventId);
+    public Participation findByEventId(String eventId);
 
 }
